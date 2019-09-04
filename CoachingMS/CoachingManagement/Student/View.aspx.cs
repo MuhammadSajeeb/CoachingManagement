@@ -37,18 +37,30 @@ namespace CoachingManagement.Student
         {
             try
             {
+                IdHiddenField.Value = ClassDropDownList.SelectedItem.ToString();
                 string name = ClassDropDownList.SelectedItem.ToString();
                 StudentGridView.DataSource = _StudentRepository.GetAllStudentByClass(name);
                 StudentGridView.DataBind();
             }
             catch
-            {
-
-            }
+            { }
         }
 
         protected void StudentGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            if(IdHiddenField.Value=="")
+            {
+                StudentGridView.PageIndex = e.NewPageIndex;
+                StudentGridView.DataSource = _StudentRepository.GetAllStudent();
+                DataBind();
+            }
+            else
+            {
+                string name = ClassDropDownList.SelectedItem.ToString();
+                StudentGridView.PageIndex = e.NewPageIndex;
+                StudentGridView.DataSource = _StudentRepository.GetAllStudentByClass(name);
+                DataBind();
+            }
 
         }
 

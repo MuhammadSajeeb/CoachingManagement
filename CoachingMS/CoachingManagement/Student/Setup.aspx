@@ -122,7 +122,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <a class="nav-link" id="ViewAlllink" href="Register.aspx">Back to Student list</a>
+                <a class="nav-link" id="ViewAlllink" href="View.aspx">Back to Student list</a>
             </div>
         </div>
     </div>

@@ -43,6 +43,22 @@ namespace C.Persistancis.Repositories
             string query = "Insert Into Students(StudentId,Name,Contact,Gender,Institute,Class,Groups,Subjects,Address,Father,Nid,Fees,Images,Date) Values ('" + _Students.StudentId + "','" + _Students.Name + "','" + _Students.Contact + "','" + _Students.Gender + "','" + _Students.Institute + "','" + _Students.Class + "','" + _Students.Groups + "','" + _Students.Subjects + "','" + _Students.Address + "','" + _Students.Father + "','" + _Students.Nid + "','" + _Students.Fees + "','"+_Students.Images+"','" + DateTime.Now.ToShortDateString() + "')";
             return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
         }
+        public int ChangeClass(Class _Class)
+        {
+            string query = "Update Students SET Class='" + _Class.NewName+ "' WHERE Class='" + _Class.Name + "' ";
+            return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
+        }
+        public int ChangeFees(Students _Students)
+        {
+            string query = "Update Students SET Fees='" + _Students.Fees + "' WHERE Class='" + _Students.Class + "' ";
+            return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
+        }
+
+        public int Delete(Students _Students)
+        {
+            string query = ("Delete From Categories Where Code ='" + _Students.StudentId + "' ");
+            return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
+        }
         public List<Class> GetAllClass()
         {
             var _ClassList = new List<Class>();

@@ -50,15 +50,6 @@
             <div class="col-md-2">
                 <asp:Label runat="server" ID="lblClass" AssociatedControlID="ClassDropDownList" CssClass="control-label">Class</asp:Label>
                 <asp:DropDownList ID="ClassDropDownList" runat="server" CssClass="form-control" AutoPostBack="true">
-                    <asp:ListItem>Select</asp:ListItem>
-                    <asp:ListItem>Five</asp:ListItem>
-                    <asp:ListItem>Six</asp:ListItem>
-                    <asp:ListItem>Seven</asp:ListItem>
-                    <asp:ListItem>Eight</asp:ListItem>
-                    <asp:ListItem>Nine</asp:ListItem>
-                    <asp:ListItem>Ten</asp:ListItem>
-                    <asp:ListItem>Eleven</asp:ListItem>
-                    <asp:ListItem>Twelve</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class="col-md-2">
@@ -68,7 +59,7 @@
                     <asp:ListItem>Science</asp:ListItem>
                     <asp:ListItem>Commerce</asp:ListItem>
                     <asp:ListItem>Arts</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
+                    <asp:ListItem>None</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class="col-md-2">

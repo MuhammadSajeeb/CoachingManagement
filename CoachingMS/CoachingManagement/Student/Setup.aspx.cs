@@ -19,11 +19,21 @@ namespace CoachingManagement.Student
             if(!IsPostBack)
             {
                 AutoStudentIdGenerate();
+                GetAllClass();
             }
         }
         protected void ShowMessage(string Message, MessageType type)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), System.Guid.NewGuid().ToString(), "ShowMessage('" + Message + "','" + type + "');", true);
+        }
+        public void GetAllClass()
+        {
+            ClassDropDownList.DataSource = _StudentRepository.GetAllClass();
+            ClassDropDownList.DataTextField = "Name";
+            ClassDropDownList.DataValueField = "Id";
+            ClassDropDownList.DataBind();
+            ClassDropDownList.Items.Insert(0, new ListItem("Select Class", "0"));
+
         }
         public void AutoStudentIdGenerate()
         {

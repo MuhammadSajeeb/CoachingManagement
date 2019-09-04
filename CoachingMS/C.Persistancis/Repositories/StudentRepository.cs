@@ -53,6 +53,11 @@ namespace C.Persistancis.Repositories
             string query = "Update Students SET Fees='" + _Students.Fees + "' WHERE Class='" + _Students.Class + "' ";
             return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
         }
+        public int ChangeSubjects(Students _Students)
+        {
+            string query = "Update Students SET Subjects='" + _Students.Subjects + "' WHERE Class='" + _Students.Class + "' ";
+            return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
+        }
 
         public int Delete(Students _Students)
         {

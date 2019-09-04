@@ -56,8 +56,12 @@
                             <ul class="dropdown-menu">
                                 <li><a runat="server" href="~/Student/Setup">Add  Student</a></li>
                                 <li><a runat="server" href="~/Student/View">View Students</a></li>
+                                <li runat="server" class="divider" role="separator"></li>
+                                <li runat="server" class="dropdown-header">Change Part</li>
+                                <li runat="server" class="divider" role="separator"></li>
                                 <li><a runat="server" href="~/Student/ChangeClass">Change Class</a></li>
                                 <li><a runat="server" href="~/Student/ChangeFees">Change Fees</a></li>
+                                <li><a runat="server" href="~/Student/ChangeSubjects">Change Subjects</a></li>
                             </ul>
                         </li>
                     </ul>

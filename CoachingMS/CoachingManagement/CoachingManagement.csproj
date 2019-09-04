@@ -155,6 +155,7 @@
     <Content Include="Site.Master" />
     <Content Include="Student\ChangeClass.aspx" />
     <Content Include="Student\ChangeFees.aspx" />
+    <Content Include="Student\ChangeSubjects.aspx" />
     <Content Include="Student\Setup.aspx" />
     <Content Include="Student\View.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -203,6 +204,13 @@
     </Compile>
     <Compile Include="Student\ChangeFees.aspx.designer.cs">
       <DependentUpon>ChangeFees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\ChangeSubjects.aspx.cs">
+      <DependentUpon>ChangeSubjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\ChangeSubjects.aspx.designer.cs">
+      <DependentUpon>ChangeSubjects.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\Setup.aspx.cs">
       <DependentUpon>Setup.aspx</DependentUpon>

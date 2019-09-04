@@ -16,10 +16,12 @@ namespace C.Core.Models
         public string Institute { get; set; }
         public string Class { get; set; }
         public string Groups { get; set; }
+        public string Subjects { get; set; }
         public string Address { get; set; }
         public string Father { get; set; }
         public string Nid { get; set; }
         public decimal Fees { get; set; }
+        public string Images { get; set; }
 
 
     }

@@ -14,7 +14,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-2">
                 <asp:Label runat="server" ID="lblStudentId" AssociatedControlID="txtStudentId" CssClass="control-label">Student Id</asp:Label>
-                <asp:TextBox runat="server" ID="txtStudentId" CssClass="form-control" TextMode="Number" ReadOnly="true" />
+                <asp:TextBox runat="server" ID="txtStudentId" CssClass="form-control" TextMode="Number" ReadOnly="true" Style="text-align: center" Font-Bold="true" Font-Size="Medium" />
             </div>
             <div class="col-md-2">
                 <asp:Label runat="server" ID="lblName" AssociatedControlID="txtName" CssClass="control-label">Name</asp:Label>
@@ -68,6 +68,7 @@
                     <asp:ListItem>Science</asp:ListItem>
                     <asp:ListItem>Commerce</asp:ListItem>
                     <asp:ListItem>Arts</asp:ListItem>
+                    <asp:ListItem>No</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class="col-md-2">
@@ -111,12 +112,17 @@
                     CssClass="text-danger" ErrorMessage="This field is required." />
             </div>
             <div class="col-md-2">
-                <br/>
+                <br />
                 <asp:Image ID="ShowImage" runat="server" CssClass="form-control" Height="40px" Width="170px" />
             </div>
             <div class="col-md-2">
-                <br/>
+                <br />
                 <asp:Button ID="SaveButton" runat="server" Text="Save" CssClass="btn btn-info" OnClick="SaveButton_Click" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a class="nav-link" id="ViewAlllink" href="Register.aspx">Back to Student list</a>
             </div>
         </div>
     </div>

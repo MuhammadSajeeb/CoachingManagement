@@ -43,5 +43,88 @@ namespace C.Persistancis.Repositories
             string query = "Insert Into Students(StudentId,Name,Contact,Gender,Institute,Class,Groups,Subjects,Address,Father,Nid,Fees,Images,Date) Values ('" + _Students.StudentId + "','" + _Students.Name + "','" + _Students.Contact + "','" + _Students.Gender + "','" + _Students.Institute + "','" + _Students.Class + "','" + _Students.Groups + "','" + _Students.Subjects + "','" + _Students.Address + "','" + _Students.Father + "','" + _Students.Nid + "','" + _Students.Fees + "','"+_Students.Images+"','" + DateTime.Now.ToShortDateString() + "')";
             return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
         }
+        public List<Class> GetAllClass()
+        {
+            var _ClassList = new List<Class>();
+            string query = ("Select *From Class");
+            var reader = _MainRepository.Reader(query, _MainRepository.ConnectionString());
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    var _Class = new Class();
+                    _Class.Id = Convert.ToInt32(reader["Id"].ToString());
+                    _Class.Name = reader["Name"].ToString();
+                    _ClassList.Add(_Class);
+                }
+            }
+            reader.Close();
+
+            return _ClassList;
+        }
+        public List<Students> GetAllStudent()
+        {
+            var _StudentsList = new List<Students>();
+            string query = ("Select *From Students");
+            var reader = _MainRepository.Reader(query, _MainRepository.ConnectionString());
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    var _Students = new Students();
+
+                    _Students.StudentId = (reader["StudentId"].ToString());
+                    _Students.Name = (reader["Name"].ToString());
+                    _Students.Contact = (reader["Contact"].ToString());
+                    _Students.Gender = (reader["Gender"].ToString());
+                    _Students.Institute = (reader["Institute"].ToString());
+                    _Students.Class = (reader["Class"].ToString());
+                    _Students.Groups = (reader["Groups"].ToString());
+                    _Students.Subjects = (reader["Subjects"].ToString());
+                    _Students.Address = (reader["Address"].ToString());
+                    _Students.Father = (reader["Father"].ToString());
+                    _Students.Nid = (reader["Nid"].ToString());
+                    _Students.Fees = Convert.ToDecimal(reader["Fees"].ToString());
+                    _Students.Date = reader["date"].ToString();
+
+                    _StudentsList.Add(_Students);
+                }
+            }
+            reader.Close();
+
+            return _StudentsList;
+        }
+        public List<Students> GetAllStudentByClass(string name)
+        {
+            var _StudentsList = new List<Students>();
+            string query = ("Select *From Students Where Class='"+name+"'");
+            var reader = _MainRepository.Reader(query, _MainRepository.ConnectionString());
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    var _Students = new Students();
+
+                    _Students.StudentId = (reader["StudentId"].ToString());
+                    _Students.Name = (reader["Name"].ToString());
+                    _Students.Contact = (reader["Contact"].ToString());
+                    _Students.Gender = (reader["Gender"].ToString());
+                    _Students.Institute = (reader["Institute"].ToString());
+                    _Students.Class = (reader["Class"].ToString());
+                    _Students.Groups = (reader["Groups"].ToString());
+                    _Students.Subjects = (reader["Subjects"].ToString());
+                    _Students.Address = (reader["Address"].ToString());
+                    _Students.Father = (reader["Father"].ToString());
+                    _Students.Nid = (reader["Nid"].ToString());
+                    _Students.Fees = Convert.ToDecimal(reader["Fees"].ToString());
+                    _Students.Date = reader["date"].ToString();
+
+                    _StudentsList.Add(_Students);
+                }
+            }
+            reader.Close();
+
+            return _StudentsList;
+        }
     }
 }

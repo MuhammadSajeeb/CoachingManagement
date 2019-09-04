@@ -22,6 +22,7 @@ namespace C.Core.Models
         public string Nid { get; set; }
         public decimal Fees { get; set; }
         public string Images { get; set; }
+        public string Date { get; set; }
 
 
     }

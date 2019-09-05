@@ -160,6 +160,7 @@
     <Content Include="Student\Setup.aspx" />
     <Content Include="Student\Update.aspx" />
     <Content Include="Student\View.aspx" />
+    <Content Include="Tuition\Fees.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -241,6 +242,13 @@
     </Compile>
     <Compile Include="Student\View.aspx.designer.cs">
       <DependentUpon>View.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tuition\Fees.aspx.cs">
+      <DependentUpon>Fees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tuition\Fees.aspx.designer.cs">
+      <DependentUpon>Fees.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

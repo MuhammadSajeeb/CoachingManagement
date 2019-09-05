@@ -11,6 +11,11 @@ namespace C.Persistancis.Repositories
     {
         MainRepository _MainRepository = new MainRepository();
 
+        public int PaidFees(TuitionFee _TuitionFee)
+        {
+            string query = "Insert Into TuitionFees(StudentId,Fees,Due,Date) Values ('" + _TuitionFee.StudentId + "','" + _TuitionFee.Fees + "','" + _TuitionFee.Due + "','" + _TuitionFee.Date + "')";
+            return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
+        }
         public Students GetStudentData(string Id)
         {
             Students _Students = null;
@@ -43,7 +48,7 @@ namespace C.Persistancis.Repositories
                 _TuitionFee = new TuitionFee();
                 _TuitionFee.LastPaid = Convert.ToDecimal(reader["Fees"].ToString());
                 _TuitionFee.RemainingDue = Convert.ToDecimal(reader["Due"].ToString());
-                _TuitionFee.Date = Convert.ToDateTime(reader["Date"].ToString());
+                _TuitionFee.Date = (reader["Date"].ToString());
             }
             reader.Close();
 
@@ -64,7 +69,7 @@ namespace C.Persistancis.Repositories
 
                     _TuitionFee.Fees = Convert.ToDecimal(reader["Fees"].ToString());
                     _TuitionFee.Due = Convert.ToDecimal(reader["Due"].ToString());
-                    _TuitionFee.Date = Convert.ToDateTime(reader["Date"].ToString());
+                    _TuitionFee.Date =(reader["Date"].ToString());
 
                     _TuitionFeeList.Add(_TuitionFee);
                 }

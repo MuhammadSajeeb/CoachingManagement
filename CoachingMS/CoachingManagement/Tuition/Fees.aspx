@@ -113,19 +113,23 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Paid Fees</h3>
                     </div>
-                    <br />
-                    <br/>
                     <div class="panel-body">
+                        <div class="form-group">
+                            <asp:Label runat="server" ID="Label1" AssociatedControlID="lblShowDate" CssClass="col-md-2 control-label">Month</asp:Label>
+                            <div class="col-md-10">
+                                <asp:Label runat="server" ID="lblShowDate" AssociatedControlID="lblShowDate" CssClass="control-label" Font-Size="Medium" Style="text-align: center">Date</asp:Label>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <asp:Label runat="server" ID="lblDate" AssociatedControlID="txtDate" CssClass="col-md-2 control-label">Date</asp:Label>
                             <div class="col-md-10">
-                                <asp:TextBox runat="server" ID="txtDate" CssClass="form-control" Font-Bold="true" Font-Size="Medium" Style="text-align: center" TextMode="Date" />
+                                <asp:TextBox runat="server" ID="txtDate" CssClass="form-control" Font-Bold="true" Font-Size="Medium" Style="text-align: center" TextMode="Date" AutoPostBack="true" OnTextChanged="txtDate_TextChanged" />
                             </div>
                         </div>
                         <div class="form-group">
                             <asp:Label runat="server" ID="lblPaid" AssociatedControlID="txtPaid" CssClass="col-md-2 control-label">Paid</asp:Label>
                             <div class="col-md-10">
-                                <asp:TextBox runat="server" ID="txtPaid" CssClass="form-control" Font-Bold="true" Font-Size="Medium" Style="text-align: center" TextMode="Number" />
+                                <asp:TextBox runat="server" ID="txtPaid" CssClass="form-control" Font-Bold="true" Font-Size="Medium" Style="text-align: center" TextMode="Number" AutoPostBack="true" OnTextChanged="txtPaid_TextChanged" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -136,7 +140,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-7 col-md-12">
-                                <asp:Button ID="PaidFeesButton" runat="server" Text="Paid" CssClass="btn btn-info" Width="85px" />
+                                <asp:Button ID="PaidFeesButton" runat="server" Text="Paid" CssClass="btn btn-info" Width="85px" OnClick="PaidFeesButton_Click" />
                             </div>
                         </div>
                     </div>

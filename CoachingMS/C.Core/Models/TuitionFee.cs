@@ -12,7 +12,7 @@ namespace C.Core.Models
         public string StudentId { get; set; }
         public decimal Fees { get; set; }
         public decimal Due { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         public decimal LastPaid { get; set; }
         public decimal RemainingDue { get; set; }

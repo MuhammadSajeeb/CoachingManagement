@@ -1,4 +1,5 @@
-﻿using C.Persistancis.Repositories;
+﻿using C.Core.Models;
+using C.Persistancis.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,10 @@ namespace CoachingManagement.Tuition
         TuitionFeesRepository _TuitionFeesRepository = new TuitionFeesRepository();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if(!IsPostBack)
+            {
+                lblShowDate.Text = DateTime.Now.ToString("MMMM");
+            }
         }
         public void GetAllDataByStudent()
         {
@@ -75,6 +79,41 @@ namespace CoachingManagement.Tuition
         {
             PaymentGridView.PageIndex = e.NewPageIndex;
             LoadPayment();
+        }
+
+        protected void txtDate_TextChanged(object sender, EventArgs e)
+        {
+            DateTime date = Convert.ToDateTime(txtDate.Text);
+
+            lblShowDate.Text = date.ToString("MMMM");
+        }
+
+        protected void PaidFeesButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TuitionFee _TuitionFee = new TuitionFee();
+                _TuitionFee.StudentId = txtStudentId.Text;
+                _TuitionFee.Fees = Convert.ToDecimal(txtPaid.Text);
+                _TuitionFee.Due = Convert.ToDecimal(txtAfterRremaining.Text);
+                _TuitionFee.Date = Convert.ToDateTime(txtDate.Text).ToShortDateString();
+
+                int paidsuccess = _TuitionFeesRepository.PaidFees(_TuitionFee);
+                if (paidsuccess > 0)
+                {
+                    Response.Redirect(Request.Url.AbsoluteUri);
+                }
+            }
+            catch { }
+        }
+
+        protected void txtPaid_TextChanged(object sender, EventArgs e)
+        {
+            decimal totalpaid = Convert.ToDecimal(txtCurrentpaid.Text);
+            decimal currentpaid = Convert.ToDecimal(txtPaid.Text);
+
+            decimal cal = totalpaid - currentpaid;
+            txtAfterRremaining.Text = cal.ToString("00");
         }
     }
 }

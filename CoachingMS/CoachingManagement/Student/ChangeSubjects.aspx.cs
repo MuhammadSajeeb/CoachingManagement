@@ -21,6 +21,8 @@ namespace CoachingManagement.Student
                 txtNewSubjects.Visible = false;
                 OkButton.Visible = false;
                 CancelButton.Visible = false;
+                ChangeButton.Visible = false;
+                IdHiddenField.Value = "";
             }
         }
         public void GetAllClass()
@@ -39,6 +41,7 @@ namespace CoachingManagement.Student
                 string name = ClassDropDownList.SelectedItem.ToString();
                 StudentGridView.DataSource = _StudentRepository.GetAllStudentByClass(name);
                 StudentGridView.DataBind();
+                ChangeButton.Visible = true;
             }
             catch
             { }
@@ -54,7 +57,16 @@ namespace CoachingManagement.Student
 
         protected void StudentGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblClass.Visible = false;
+            ClassDropDownList.Visible = false;
+            ChangeButton.Visible = false;
+            lblNewSubjects.Visible = true;
+            txtNewSubjects.Visible = true;
+            OkButton.Visible = true;
+            CancelButton.Visible = true;
+            StudentGridView.Enabled = false;
 
+            IdHiddenField.Value = (StudentGridView.SelectedRow.Cells[0].Text);
         }
 
         protected void ChangeButton_Click(object sender, EventArgs e)
@@ -66,26 +78,41 @@ namespace CoachingManagement.Student
             txtNewSubjects.Visible = true;
             OkButton.Visible = true;
             CancelButton.Visible = true;
+            StudentGridView.Enabled = false;
         }
 
         protected void OkButton_Click(object sender, EventArgs e)
         {
+
             try
             {
-                Students _Students = new Students();
-                _Students.Class = ClassDropDownList.SelectedItem.ToString();
-                _Students.Subjects =txtNewSubjects.Text;
-
-                int changeclass = _StudentRepository.ChangeSubjects(_Students);
-                if (changeclass > 0)
+                if (IdHiddenField.Value != "")
                 {
-                    Response.Redirect(Request.Url.AbsoluteUri);
-                }
+                    Students _Students = new Students();
+                    _Students.Subjects = txtNewSubjects.Text;
+                    _Students.StudentId = IdHiddenField.Value.ToString();
 
+                    int changeclass = _StudentRepository.ChangeSubjectsByStudent(_Students);
+                    if (changeclass > 0)
+                    {
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+                }
+                else
+                {
+                    Students _Students = new Students();
+                    _Students.Class = ClassDropDownList.SelectedItem.ToString();
+                    _Students.Subjects = txtNewSubjects.Text;
+
+                    int changeclass = _StudentRepository.ChangeSubjects(_Students);
+                    if (changeclass > 0)
+                    {
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+                }
             }
             catch
-            {
-            }
+            { }
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
@@ -97,6 +124,7 @@ namespace CoachingManagement.Student
             txtNewSubjects.Visible = false;
             OkButton.Visible = false;
             CancelButton.Visible = false;
+            StudentGridView.Enabled = true;
         }
     }
 }

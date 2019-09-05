@@ -155,8 +155,10 @@
     <Content Include="Site.Master" />
     <Content Include="Student\ChangeClass.aspx" />
     <Content Include="Student\ChangeFees.aspx" />
+    <Content Include="Student\ChangeGroups.aspx" />
     <Content Include="Student\ChangeSubjects.aspx" />
     <Content Include="Student\Setup.aspx" />
+    <Content Include="Student\Update.aspx" />
     <Content Include="Student\View.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -205,6 +207,13 @@
     <Compile Include="Student\ChangeFees.aspx.designer.cs">
       <DependentUpon>ChangeFees.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Student\ChangeGroups.aspx.cs">
+      <DependentUpon>ChangeGroups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\ChangeGroups.aspx.designer.cs">
+      <DependentUpon>ChangeGroups.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Student\ChangeSubjects.aspx.cs">
       <DependentUpon>ChangeSubjects.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -218,6 +227,13 @@
     </Compile>
     <Compile Include="Student\Setup.aspx.designer.cs">
       <DependentUpon>Setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Update.aspx.cs">
+      <DependentUpon>Update.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Update.aspx.designer.cs">
+      <DependentUpon>Update.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\View.aspx.cs">
       <DependentUpon>View.aspx</DependentUpon>

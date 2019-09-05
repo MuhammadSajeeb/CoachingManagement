@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" ID="lblNewSubjects" CssClass="col-md-2 control-label" Font-Bold="true" Text="New Fees" Font-Size="Medium"></asp:Label>
+            <asp:Label runat="server" ID="lblNewSubjects" CssClass="col-md-2 control-label" Font-Bold="true" Text="New Subjects" Font-Size="Medium"></asp:Label>
             <div class="col-md-10">
                 <asp:TextBox ID="txtNewSubjects" runat="server" CssClass="form-control" Font-Size="Medium" Font-Bold="true"></asp:TextBox>        
             </div>

@@ -48,9 +48,19 @@ namespace C.Persistancis.Repositories
             string query = "Update Students SET Class='" + _Class.NewName+ "' WHERE Class='" + _Class.Name + "' ";
             return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
         }
+        public int ChangeClassByStudent(Students _Students)
+        {
+            string query = "Update Students SET Class='" + _Students.Class + "' WHERE StudentId='" + _Students.StudentId + "' ";
+            return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
+        }
         public int ChangeFees(Students _Students)
         {
             string query = "Update Students SET Fees='" + _Students.Fees + "' WHERE Class='" + _Students.Class + "' ";
+            return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
+        }
+        public int ChangeFeesByStudent(Students _Students)
+        {
+            string query = "Update Students SET Fees='" + _Students.Fees + "' WHERE StudentId='" + _Students.StudentId + "' ";
             return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
         }
         public int ChangeSubjects(Students _Students)
@@ -58,10 +68,24 @@ namespace C.Persistancis.Repositories
             string query = "Update Students SET Subjects='" + _Students.Subjects + "' WHERE Class='" + _Students.Class + "' ";
             return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
         }
-
+        public int ChangeSubjectsByStudent(Students _Students)
+        {
+            string query = "Update Students SET Subjects='" + _Students.Subjects + "' WHERE StudentId='" + _Students.StudentId + "' ";
+            return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
+        }
+        public int ChangeGroups(Students _Students)
+        {
+            string query = "Update Students SET Groups='" + _Students.Groups + "' WHERE Class='" + _Students.Class + "' ";
+            return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
+        }
+        public int ChangeGroupsByStudent(Students _Students)
+        {
+            string query = "Update Students SET Groups='" + _Students.Groups + "' WHERE StudentId='" + _Students.StudentId + "' ";
+            return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
+        }
         public int Delete(Students _Students)
         {
-            string query = ("Delete From Categories Where Code ='" + _Students.StudentId + "' ");
+            string query = ("Delete From Students Where StudentId ='" + _Students.StudentId + "' ");
             return _MainRepository.ExecuteNonQuery(query, _MainRepository.ConnectionString());
         }
         public List<Class> GetAllClass()
@@ -147,5 +171,33 @@ namespace C.Persistancis.Repositories
 
             return _StudentsList;
         }
+        public Students GetStudentData(string Id)
+        {
+            Students _Students = null;
+
+            string query = "select *From Students Where StudentId='" + Id + "'";
+            var reader = _MainRepository.Reader(query, _MainRepository.ConnectionString());
+            if (reader.HasRows)
+            {
+                reader.Read();
+                _Students = new Students();
+                _Students.StudentId = (reader["StudentId"].ToString());
+                _Students.Name = (reader["Name"].ToString());
+                _Students.Contact = (reader["Contact"].ToString());
+                _Students.Gender = (reader["Gender"].ToString());
+                _Students.Institute = (reader["Institute"].ToString());
+                _Students.Class = (reader["Class"].ToString());
+                _Students.Groups = (reader["Groups"].ToString());
+                _Students.Subjects = (reader["Subjects"].ToString());
+                _Students.Address = (reader["Address"].ToString());
+                _Students.Father = (reader["Father"].ToString());
+                _Students.Nid = (reader["Nid"].ToString());
+                _Students.Fees = Convert.ToDecimal(reader["Fees"].ToString());
+            }
+            reader.Close();
+
+            return _Students;
+        }
+
     }
 }

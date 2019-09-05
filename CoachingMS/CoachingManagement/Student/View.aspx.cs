@@ -1,4 +1,5 @@
-﻿using C.Persistancis.Repositories;
+﻿using C.Core.Models;
+using C.Persistancis.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,18 @@ namespace CoachingManagement.Student
             StudentGridView.DataSource = _StudentRepository.GetAllStudent();
             StudentGridView.DataBind();
         }
+        public void GetAllStudentByClass()
+        {
+            try
+            {
+                IdHiddenField.Value = ClassDropDownList.SelectedItem.ToString();
+                string name = ClassDropDownList.SelectedItem.ToString();
+                StudentGridView.DataSource = _StudentRepository.GetAllStudentByClass(name);
+                StudentGridView.DataBind();
+            }
+            catch
+            { }
+        }
         protected void ClassDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -47,7 +60,27 @@ namespace CoachingManagement.Student
         }
         protected void StudentGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string StudentId = (StudentGridView.SelectedRow.Cells[1].Text);
+            Response.Redirect("Update.aspx?studentid=" + StudentId);
+        }
 
+        protected void StudentGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                Students _Students = new Students();
+                _Students.StudentId = (e.CommandArgument).ToString();
+
+                int deletesuccess = _StudentRepository.Delete(_Students);
+                if (deletesuccess > 0)
+                {
+                    GetAllStudentByClass();
+                }
+
+            }
+            catch
+            {
+            }
         }
     }
 }

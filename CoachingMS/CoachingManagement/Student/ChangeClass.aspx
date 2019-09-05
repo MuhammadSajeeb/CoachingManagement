@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChangeClass.aspx.cs" Inherits="CoachingManagement.Student.ChangeClass" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <br />
+ <br />
     <br />
     <h4>Change Class</h4>
     <div class="form-horizontal">
@@ -38,7 +38,7 @@
                             <asp:BoundField DataField="Nid" HeaderText="Nid" />
                             <asp:BoundField DataField="Fees" HeaderText="Fees" />
                             <asp:BoundField DataField="date" HeaderText="Admited" />
-                            <asp:CommandField HeaderText="Action" SelectText="Edit" ShowSelectButton="True">
+                            <asp:CommandField HeaderText="Change" SelectText="Only" ShowSelectButton="True">
                                 <ItemStyle ForeColor="#CC0000" />
                             </asp:CommandField>
                         </Columns>

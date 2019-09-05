@@ -18,10 +18,12 @@ namespace CoachingManagement.Student
             {
                 GetAllClass();
                 GetAllNewClass();
+                ChangeButton.Visible = false;
                 lblNewClass.Visible = false;
                 NewClassDropDownList.Visible = false;
                 OkButton.Visible = false;
                 CancelButton.Visible = false;
+                IdHiddenField.Value = "";
             }
         }
         public void GetAllClass()
@@ -42,6 +44,17 @@ namespace CoachingManagement.Student
             NewClassDropDownList.Items.Insert(0, new ListItem("Select Class", "0"));
 
         }
+        public void GetAllStudentByClass()
+        {
+            try
+            {
+                string name = ClassDropDownList.SelectedItem.ToString();
+                StudentGridView.DataSource = _StudentRepository.GetAllStudentByClass(name);
+                StudentGridView.DataBind();
+            }
+            catch
+            { }
+        }
         protected void StudentGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             string name = ClassDropDownList.SelectedItem.ToString();
@@ -52,7 +65,16 @@ namespace CoachingManagement.Student
 
         protected void StudentGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblClass.Visible = false;
+            ClassDropDownList.Visible = false;
+            ChangeButton.Visible = false;
+            lblNewClass.Visible = true;
+            NewClassDropDownList.Visible = true;
+            OkButton.Visible = true;
+            CancelButton.Visible = true;
+            StudentGridView.Enabled = false;
 
+            IdHiddenField.Value = (StudentGridView.SelectedRow.Cells[0].Text);
         }
 
         protected void ClassDropDownList_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,6 +84,7 @@ namespace CoachingManagement.Student
                 string name = ClassDropDownList.SelectedItem.ToString();
                 StudentGridView.DataSource = _StudentRepository.GetAllStudentByClass(name);
                 StudentGridView.DataBind();
+                ChangeButton.Visible = true;
             }
             catch
             { }
@@ -76,6 +99,7 @@ namespace CoachingManagement.Student
             NewClassDropDownList.Visible = true;
             OkButton.Visible = true;
             CancelButton.Visible = true;
+            StudentGridView.Enabled = false;
 
         }
 
@@ -83,20 +107,33 @@ namespace CoachingManagement.Student
         {
             try
             {
-                Class _Class = new Class();
-                _Class.Name = ClassDropDownList.SelectedItem.ToString();
-                _Class.NewName = NewClassDropDownList.SelectedItem.ToString();
-
-                int changeclass = _StudentRepository.ChangeClass(_Class);
-                if(changeclass>0)
+                if(IdHiddenField.Value!="")
                 {
-                    Response.Redirect(Request.Url.AbsoluteUri);
+                    Students _Students = new Students();
+                    _Students.Class= NewClassDropDownList.SelectedItem.ToString();
+                    _Students.StudentId = IdHiddenField.Value.ToString();
+
+                    int changeclass = _StudentRepository.ChangeClassByStudent(_Students);
+                    if (changeclass > 0)
+                    {
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
                 }
-                
+                else
+                {
+                    Class _Class = new Class();
+                    _Class.Name = ClassDropDownList.SelectedItem.ToString();
+                    _Class.NewName = NewClassDropDownList.SelectedItem.ToString();
+
+                    int changeclass = _StudentRepository.ChangeClass(_Class);
+                    if (changeclass > 0)
+                    {
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+                }
             }
             catch
-            {
-            }
+            {}
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
@@ -108,6 +145,7 @@ namespace CoachingManagement.Student
             NewClassDropDownList.Visible = false;
             OkButton.Visible = false;
             CancelButton.Visible = false;
+            StudentGridView.Enabled = true;
         }
     }
 }

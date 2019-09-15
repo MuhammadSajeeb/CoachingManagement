@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=19.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.19.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -156,10 +159,12 @@
     <Content Include="Student\ChangeClass.aspx" />
     <Content Include="Student\ChangeFees.aspx" />
     <Content Include="Student\ChangeGroups.aspx" />
+    <Content Include="Student\Changes.aspx" />
     <Content Include="Student\ChangeSubjects.aspx" />
     <Content Include="Student\Setup.aspx" />
     <Content Include="Student\Update.aspx" />
     <Content Include="Student\View.aspx" />
+    <Content Include="testingtabcontainer.aspx" />
     <Content Include="Tuition\Fees.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -215,6 +220,13 @@
     <Compile Include="Student\ChangeGroups.aspx.designer.cs">
       <DependentUpon>ChangeGroups.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Student\Changes.aspx.cs">
+      <DependentUpon>Changes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Changes.aspx.designer.cs">
+      <DependentUpon>Changes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Student\ChangeSubjects.aspx.cs">
       <DependentUpon>ChangeSubjects.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -242,6 +254,13 @@
     </Compile>
     <Compile Include="Student\View.aspx.designer.cs">
       <DependentUpon>View.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="testingtabcontainer.aspx.cs">
+      <DependentUpon>testingtabcontainer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testingtabcontainer.aspx.designer.cs">
+      <DependentUpon>testingtabcontainer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tuition\Fees.aspx.cs">
       <DependentUpon>Fees.aspx</DependentUpon>
